@@ -1,0 +1,75 @@
+/* all */
+body {
+    background-color: #343A40;
+    color: #FFC107;
+}
+
+
+
+/* navbar */
+#acc {
+    color: #FFC107;
+}
+
+#home {
+    color: #FFC107;
+}
+
+
+/* login/signup page */
+#login {
+    height: 100vh;
+}
+
+
+
+
+
+
+
+/* sSearch + gSearch */
+.table {
+    color: #ffffff;
+}
+
+.btn {
+    border: 1px solid black;
+    background-color: #343A40;
+    color: #ffffff;
+    transition: 0.7s;
+}
+
+.btn:hover {
+    color: #FFC107;
+    background-color: #1e2124;
+    transform: scale(1.15);
+}
+
+#org-btn {
+    background-color: #FFC107;
+    color: #000000;
+}
+
+#star {
+    border: 1px solid #343A40;
+    color: #FFC107;
+    background-color: #343A40;
+}
+
+
+
+
+
+/* my account page */
+#favorites {
+    border: 2px solid #FFC107;
+}
+
+
+/* game page */
+#cd {
+    background-color: #343A40;
+    border: none;
+}
+
+

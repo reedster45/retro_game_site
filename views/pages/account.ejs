@@ -1,0 +1,81 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container d-flex justify-content-center">
+    <div>
+        <h1>My Account</h1>
+        <div id="favorites" class="mt-5 px-3">
+            <h3 class="mt-1">Favorite Systems</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">System</th>
+                        <th scope="col">Manufacturer</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Favorite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < sys.length; i++) { %>
+                    <tr>
+                        <th scope="row"><%= i+1 %></th>
+                        <form action="system" method="GET">
+                            <input type="hidden" name="name" value="<%= sys[i].name %>">
+                            <td><button class="btn" type="submit"><%= sys[i].name %></button></td>
+                        </form>
+                        <td><%= sys[i].manufacturer %></td>
+                        <td><%= sys[i].year %></td>
+                        <form action="account" method="GET">
+                            <input type="hidden" name="name" value="<%= sys[i].name %>">
+                            <td><button type="submit">delete</button></td>
+                        </form>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="favorites" class="mt-5 mb-5 px-3">
+            <h3 class="mt-1">Favorite Games</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Game</th>
+                        <th scope="col">System</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Favorite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < games.length; i++) { %>
+                    <tr>
+                        <th scope="row"><%= i+1 %></th>
+                        <form action="game" method="GET">
+                            <input type="hidden" name="GID" value="<%= games[i].GID %>">
+                            <td><button class="btn" type="submit"><%= games[i].title %></button></td>
+                        </form>
+                        <td><%= games[i].sys_name %></td>
+                        <td><%= games[i].publisher %></td>
+                        <td><%= games[i].year %></td>
+                        <form action="account" method="GET">
+                            <input type="hidden" name="GID" value="<%= games[i].GID %>">
+                            <td><button type="submit">delete</button></td>
+                        </form>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-4">
+            <form action="account" method="POST">
+                <button id="org-btn" class="btn" type="submit">logout</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

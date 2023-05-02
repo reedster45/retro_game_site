@@ -1,0 +1,55 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container d-flex justify-content-center">
+    <h1>Search Games</h1><br>
+</div>
+
+<form action="?search=" method="GET">
+    <div class="container d-flex justify-content-center btn-group">
+        <input name="search" class="form-control" type="text" placeholder="Search by Game Title...">
+        <button id="org-btn" type="submit" class="btn">Search</button>
+    </div>
+</form>
+
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Game</th>
+            <th scope="col">System</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Year</th>
+            <th scope="col">Favorite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i < rows.length; i++) { %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+
+            <form action="game" method="GET">
+              <input type="hidden" name="GID" value="<%= rows[i].GID %>">
+              <td><button class="btn" type="submit"><%= rows[i].title %></button></td>
+            </form>
+
+            <form action="system" method="GET">
+              <input type="hidden" name="name" value="<%= rows[i].sys_name %>">
+              <td><button class="btn" type="submit"><%= rows[i].sys_name %></button></td>
+            </form>
+
+            <td><%= rows[i].publisher %></td>
+            <td><%= rows[i].year %></td>
+
+            <form action="games" method="GET">
+              <input type="hidden" name="GID" value="<%= rows[i].GID %>">
+              <td><% if (favs.some(game => game.GID == rows[i].GID)) { %><button id="star" class="btn" type="submit"><i class="bi bi-star-fill"></i></button><% } else { %><button id="star" class="btn" type="submit"><i class="bi bi-star"></i></button><% } %></td>
+            </form>
+          
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+</div>
+
+<%- include('../partials/footer.ejs') %>
